@@ -2,17 +2,11 @@ from flask import Flask
 from flask import render_template
 from pymongo import MongoClient
 import json
+import pandas as pd
 from bson import json_util
 from bson.json_util import dumps
 
 app = Flask(__name__)
-
-MONGODB_HOST = 'localhost'
-MONGODB_PORT = 27017
-DBS_NAME = 'DonorsSchool'
-COLLECTION_NAME = 'projects'
-FIELDS = {'school_state': True, 'resource_type': True, 'poverty_level': True, 'date_posted': True, 'total_donations': True, '_id': False, 'num_projects': True}
-
 
 @app.route("/")
 def index():
@@ -21,15 +15,8 @@ def index():
 
 @app.route("/donorschoose/projects")
 def donorschoose_projects():
-    connection = MongoClient(MONGODB_HOST, MONGODB_PORT)
-    collection = connection[DBS_NAME][COLLECTION_NAME]
-    projects = collection.find(projection=FIELDS, limit=100000)
-    #projects = collection.find(projection=FIELDS)
-    json_projects = []
-    for project in projects:
-        json_projects.append(project)
-    json_projects = json.dumps(json_projects, default=json_util.default)
-    connection.close()
+    df = pd.read_csv('output.csv')
+    json_projects = df.to_json(orient='records')
     return json_projects
 
 if __name__ == "__main__":

@@ -137,6 +137,8 @@ div.dc-chart {
     margin-top: 15px;
     margin-right: 15px;
 }
+.bar-color-1 { fill: #3182bd; }
+
 
 .dc-data-count .filter-count {
     color: #3182bd;
