@@ -137,6 +137,8 @@ div.dc-chart {
     margin-top: 15px;
     margin-right: 15px;
 }
+.bar-color-1 { fill: #3182bd; }
+
 
 .dc-data-count .filter-count {
     color: #3182bd;
@@ -164,6 +166,18 @@ div.dc-chart {
 }
 
 .dc-chart g.selected path {
+}
+.tooltip {   
+    position: absolute;           
+    text-align: center;           
+    width: 60px;                  
+    height: 45px;                 
+    padding: 2px;             
+    font: 12px sans-serif;        
+    background: lightsteelblue;   
+    border: 0px;      
+    border-radius: 8px;           
+    pointer-events: none;         
 }
 
 .dc-chart g.deselected path {
