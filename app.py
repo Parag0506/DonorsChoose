@@ -1,6 +1,5 @@
 from flask import Flask
 from flask import render_template
-from pymongo import MongoClient
 import json
 import pandas as pd
 from bson import json_util
